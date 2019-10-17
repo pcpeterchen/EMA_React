@@ -2,6 +2,18 @@ import React, { Component } from "react";
 import "./App.css";
 import Graph from "./Graph";
 
+
+function startD() {
+  var x = new Date();
+  var y = x.getFullYear().toString() - 1;
+  var m = (x.getMonth() + 1).toString();
+  var d = x.getDate().toString();
+  (d.length == 1) && (d = '0' + d);
+  (m.length == 1) && (m = '0' + m);
+  var yyyymmdd =  m + '-' + d + '-' + y;
+  return yyyymmdd;
+}
+
 const url = 'https://api.tiingo.com/tiingo/daily/';
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 const dateTitle = "date";
@@ -11,8 +23,10 @@ var headers = {
             'Authorization': 'Token 5c55cabb26b73f033301e8d556368a6acdad40e2',
         };
 
-var ticker = 'aapl'
-var startDate = '2018-10-04'
+var ticker = 'aapl';
+var startDate = startD();
+console.log(startDate);
+
 let randomData = () =>
   Array.from({ length: 11 }, () => Math.floor(Math.random() * 100));
 
